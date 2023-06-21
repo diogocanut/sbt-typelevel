@@ -55,6 +55,7 @@ lazy val `sbt-typelevel` = tlCrossRootProject.aggregate(
   mergify,
   versioning,
   mima,
+  tastyMima,
   sonatype,
   scalafix,
   ciSigning,
@@ -127,6 +128,14 @@ lazy val mima = project
   .enablePlugins(SbtPlugin)
   .settings(
     name := "sbt-typelevel-mima"
+  )
+  .dependsOn(kernel)
+
+lazy val tastyMima = project
+  .in(file("tasty-mima"))
+  .enablePlugins(SbtPlugin)
+  .settings(
+    name := "sbt-typelevel-tasty-mima"
   )
   .dependsOn(kernel)
 
